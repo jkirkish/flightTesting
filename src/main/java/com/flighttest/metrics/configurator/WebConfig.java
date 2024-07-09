@@ -10,15 +10,13 @@ public class WebConfig {
 
     @Bean
     public WebMvcConfigurer corsConfigurer() {
-            
-        return new WebMvcConfigurer(){
+        return new WebMvcConfigurer() {
             @Override
-            public void addCorsMappings(@SuppressWarnings("null") CorsRegistry registry) {
+            public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:3000");
+                        .allowedOrigins("http://localhost:3000") // Adjust if needed
+                        .allowedMethods("GET", "POST", "PUT", "DELETE");
             }
-
         };
     }
-    
 }
