@@ -45,4 +45,12 @@ public class UserService {
     public void deleteAllUsers() {
         userRepository.deleteAll();
     }
+
+    public User authenticateUser(User user) {
+        User existingUser = userRepository.findByEmail(user.getEmail());
+        if (existingUser != null && existingUser.getPassword().equals(user.getPassword())) {
+            return existingUser;
+        }
+        return null;
+    }
 }
